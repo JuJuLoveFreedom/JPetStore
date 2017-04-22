@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JPetStore.iml" filepath="$PROJECT_DIR$/.idea/modules/JPetStore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_main.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_test.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/spring-data-jsp-mvc/spring-data-jsp-mvc.iml" filepath="$PROJECT_DIR$/spring-data-jsp-mvc/spring-data-jsp-mvc.iml" />
+    </modules>
+  </component>
+</project>
