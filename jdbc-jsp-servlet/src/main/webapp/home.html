@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Store - Home</title></head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        margin: 0 auto;
+        padding: 0;
+        max-width: 1000px;
+        /*background-color: #005e21;*/
+    }
+    a:link {
+        color: #000000;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #000000;
+        text-decoration: none;
+    }
+</style>
+<body>
+<header>
+<div class="container">
+    <style scoped>
+        .head{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+        .left{
+            font:normal normal normal 24px/1.46em futura-lt-w01-book,sans-serif;
+        }
+        .right{
+            font: normal normal normal 14px/1.4em georgia,palatino,'book antiqua','palatino linotype',serif;
+        }
+        ul{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul>li{
+            list-style: none;
+            margin: auto 10px;
+        }
+        .cart{
+            display: inline-block;
+            height: 28px;
+            width: 30px;
+        }
+    </style>
+    <div class="head">
+        <div class="left">Pet Store</div>
+        <div class="right">
+            <ul>
+                <li><a href="#!">Home</a> </li>
+                <li><a href="#!">Shop</a> </li>
+                <li><a href="#!">About</a></li>
+                <li>
+                    <a href="#!">
+                        <div class="cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="198.6 340 197.7 166" preserveAspectRatio="xMinYMax meet" ng-switch-when="2">
+                                <polyline points="396.5 395.9 368.5 467.4 263.1 467.4 226.2 369.8 203.6 369.8 198.8 356.7 235.1 356.7 272 454.3 359.5 454.3 381.6 395.9"></polyline>
+                                <circle cx="359.5" cy="493" r="13"></circle>
+                                <circle cx="275" cy="493" r="13"></circle>
+                                <text x="315" y="375" dy=".48em" text-anchor="middle" class="quantity" data-hook="cart-widget-items-count">100</text>
+                            </svg>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</header>
+<section>
+    <div class="container">
+        <style scoped>
+            .product{
+            }
+            .product-col{
+                display: inline-block;
+                width: 49.5%;
+            }
+            .product-name{
+                font: normal normal normal 40px/1.25em snellroundhandw01-scrip,cursive;
+            }
+            .product-id{
+                font:normal normal normal 14px/17px avenir-lt-w01_35-light1475496,sans-serif;
+            }
+            .product-price{
+                font:normal normal normal 24px/1.46em futura-lt-w01-book,sans-serif;
+            }
+            .product-quantity{
+                font: normal normal normal 16px/1.55em avenir-lt-w01_35-light1475496,sans-serif;
+            }
+            .btn{
+                font:normal normal normal 16px/1.55em avenir-lt-w01_35-light1475496,sans-serif;
+            }
+            .btn:hover{
+                cursor: pointer;
+            }
+            .text-font{
+                font:normal normal normal 16px/1.55em avenir-lt-w01_35-light1475496,sans-serif;
+            }
+            .test{
+                font:normal normal normal 56px/1.25em snellroundhandw01-scrip,cursive;
+            }
+        </style>
+        <div class="product">
+            <div class="product-col">
+                <img src="images/bird1.gif">
+                <div class="text-font">
+                    Amazon parrot is the common name for a parrot of the genus Amazona. These are medium-sized parrots native to the New World ranging from South America to Mexico and the Caribbean.
+                </div>
+            </div>
+            <div class="product-col">
+                <div class="product-name">I'm a product</div>
+                <div class="product-id">SKU: 364215376135191</div>
+                <div class="product-price">$85.00</div>
+                <div class="product-quantity">Quantity</div>
+                <div>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="btn">ADD TO CART</div>
+                <div class="test">aslfjlas</div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
