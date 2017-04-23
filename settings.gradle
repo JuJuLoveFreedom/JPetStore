@@ -1,3 +1,3 @@
 rootProject.name = 'JPetStore'
 include 'jdbc-jsp-servlet'
-
+include 'spring-data-jsp-mvc'
