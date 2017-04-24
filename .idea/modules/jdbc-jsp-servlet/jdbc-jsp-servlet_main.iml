@@ -3,13 +3,16 @@
   <component name="FacetManager">
     <facet type="web" name="Web Gradle : jdbc-jsp-servlet-1.0-SNAPSHOT.war">
       <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/../../../jdbc-jsp-servlet/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/../../../jdbc-jsp-servlet/src/main/webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../../jdbc-jsp-servlet/build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../jdbc-jsp-servlet/src/main">

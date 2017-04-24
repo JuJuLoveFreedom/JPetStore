@@ -21,7 +21,7 @@ interface AccountService{
     // 修改地址
     fun updateAddress(address: Address,id: Long)
     // 修改基本信息（真实姓名 昵称 QQ 电话 电子邮件）
-    fun updateBaseInfo(accountBaseInfo: AccountBaseInfo)
+    fun updateBaseInfo(accountBaseInfo: AccountBaseInfo,id: Long)
     // 修改个人喜好（语言 宠物 快递）
     fun updateProfile(profile: Profile)
     // 添加收货地址
@@ -135,8 +135,8 @@ class AccountServiceImpl(
         accountRepository.save(account)
     }
 
-    override fun updateBaseInfo(accountBaseInfo: AccountBaseInfo) {
-        var account=accountRepository.findOne(accountBaseInfo.id)
+    override fun updateBaseInfo(accountBaseInfo: AccountBaseInfo,id: Long) {
+        var account=accountRepository.findOne(id)
         account.accountBaseInfo=accountBaseInfo
         accountRepository.save(account)
     }

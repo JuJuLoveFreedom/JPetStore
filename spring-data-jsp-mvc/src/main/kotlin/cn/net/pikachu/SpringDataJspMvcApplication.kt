@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
-import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration
+//import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration
 
 @SpringBootApplication
 class SpringDataJspMvcApplication
@@ -13,6 +13,8 @@ class SpringDataJspMvcApplication
 fun main(args: Array<String>) {
     SpringApplication.run(SpringDataJspMvcApplication::class.java, *args)
 }
+/*
+
 @Configuration
 class MyRepositoryRestMvcConfiguration : RepositoryRestMvcConfiguration()
 
@@ -21,3 +23,4 @@ class MyRepositoryRestMvcConfiguration : RepositoryRestMvcConfiguration()
 @EnableCaching
 @AllOpen
 open class AppConfig
+*/

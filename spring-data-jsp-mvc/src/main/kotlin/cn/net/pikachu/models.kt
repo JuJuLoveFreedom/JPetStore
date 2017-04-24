@@ -15,6 +15,7 @@ data class User(
         var username: String,
         var password: String,
         @OneToOne
+        @JoinColumn(name = "id")
         var account: Account
 )
 
@@ -31,26 +32,29 @@ data class Address(
 @Entity
 data class Account(
         @Id
-        @GeneratedValue
-        var id: Long,
+        var id:Long,
         // 用户等级
         @OneToOne
         var level: Level,
+        @OneToOne
+        @JoinColumn(name = "id")
         var accountBaseInfo: AccountBaseInfo,
         @Embedded
         var address: Address,
         @OneToOne
+        @JoinColumn(name = "id")
         var profile: Profile,
         @OneToOne
+        @JoinColumn(name = "id")
         var user: User,
         @OneToMany
         var deliveryAddressList: MutableList<DeliveryAddress>,
         @OneToOne
+        @JoinColumn(name = "id")
         var cart: Cart,
         @OneToMany
         var orders: MutableList<Order>
 )
-
 @Entity
 data class AccountBaseInfo(
         @Id
@@ -96,7 +100,8 @@ data class Item(
         // 实际价格
         var unitPrice: BigDecimal,
         // 库存
-        var quantity: Quantity,
+        @OneToOne
+        var quantity:Quantity,
         @OneToOne
         var category: Category,
         @OneToMany
@@ -169,6 +174,7 @@ data class Order(
 
 // 收货地址
 @Entity
+@Embeddable
 data class DeliveryAddress(
         @Id
         var id: Long,
@@ -257,10 +263,7 @@ data class CommentImgList(
 @Entity
 data class Cart(
         @Id
-        @GeneratedValue
         var id: Long,
-        @OneToOne
-        var user: User,
         @OneToMany
         var lineItems: MutableList<LineItem>,
         var total: BigDecimal
