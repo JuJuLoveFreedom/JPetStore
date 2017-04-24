@@ -144,8 +144,8 @@ data class Order(
         @OneToMany
         var logisticsInfo: MutableList<LogisticsInfo>,
         // 生成日期
-        var date:Timestamp,
-        var status:String
+        var date:Timestamp = Timestamp(System.currentTimeMillis()),
+        var status:String = "未付款"
 )
 // 收货地址
 @Entity
