@@ -19,4 +19,5 @@ class MyRepositoryRestMvcConfiguration : RepositoryRestMvcConfiguration()
 @Configuration
 @Import(RepositoryRestMvcConfiguration::class)
 @EnableCaching
-class AppConfig
+@AllOpen
+open class AppConfig

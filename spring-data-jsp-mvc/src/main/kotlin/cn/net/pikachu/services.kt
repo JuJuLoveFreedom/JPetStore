@@ -1,4 +1,4 @@
-package cn.net.pikachu
+﻿package cn.net.pikachu
 
 /**
  * Created by pikachu on 2017/4/22.
@@ -95,7 +95,6 @@ interface StatisticsService{
     // 获取最近n天的销售情况
     fun getLatestSales(n:Int)
 }
-
 class AccountServiceImpl(
         var userRepository: UserRepository,
         var accountRepository: AccountRepository,
@@ -169,7 +168,6 @@ class AccountServiceImpl(
 
     }
 }
-
 
 class GoodsServiceImpl(
         var itemRepository: ItemRepository
