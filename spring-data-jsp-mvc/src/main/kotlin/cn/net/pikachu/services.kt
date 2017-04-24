@@ -63,7 +63,7 @@ interface OrderService{
 }
 interface PayService{
     // 为某个订单付款
-    fun payForOrder(orderId: Long,id: Long)
+    fun payForOrder(orderId: Long,payInfo: PayInfo,id: Long)
     // 申请退款
     fun refund(orderId: Long,id: Long)
 }
@@ -75,7 +75,7 @@ interface ExpressService{
 }
 interface DeliveryAddressService{
     fun getAllDeliveryAddress(id: Long):List<DeliveryAddress>
-    fun addDeliveryAddress(deliveryAddress: DeliveryAddress):DeliveryAddress
+    fun addDeliveryAddress(deliveryAddress: DeliveryAddress,id:Long):DeliveryAddress
     fun deleteDeliveryAddress(deliveryAddressId: Long)
     fun updateDeliveryAddress(deliveryAddress: DeliveryAddress)
 }
@@ -239,6 +239,7 @@ class OrderServiceImpl(
         }.forEach {
             order.items.add(it)
         }
+        order.calTotal()
         order.deliveryAddress=deliveryAddress
         orderRepository.save(order)
 
@@ -257,3 +258,103 @@ class OrderServiceImpl(
 
 }
 
+class PayServiceImpl(
+        var orderRepository: OrderRepository,
+        var payInfoRepository: PayInfoRepository,
+        var refundInfoRepository:RefundRepository
+):PayService{
+    override fun payForOrder(orderId: Long,payInfo: PayInfo, id: Long) {
+        var order=orderRepository.findOne(orderId)
+        var payInfo1=payInfoRepository.findOne(orderId)
+        payInfo1.amount=order.total
+        payInfo1.status="已付款"
+        payInfo1=payInfo
+        payInfoRepository.save(payInfo1)
+    }
+
+    override fun refund(orderId: Long, id: Long) {
+        var payIfo=payInfoRepository.findOne(orderId)
+        var refundInfo1=refundInfoRepository.findOne(orderId)
+        refundInfo1.payInfo=payIfo
+        refundInfoRepository.save(refundInfo1)
+    }
+
+}
+
+
+class ExpressServiceImpl(
+        var orderRepository: OrderRepository,
+        var logisticsInfoRepository: LogisticsInfoRepository
+): ExpressService{
+    override fun getLogisticsInfosByOrderId(orderId: Long): List<LogisticsInfo> {
+        var order=orderRepository.findOne(orderId)
+        var logisticsInfo=order.logisticsInfo
+        return logisticsInfo
+    }
+
+    override fun remindShipment(orderId: Long) {
+        println("催单！催单！催单！")
+    }
+
+}
+
+class DeliveryAddressServiceImpl(
+        var deliveryAddressRepository: DeliveryAddressRepository,
+        var accountRepository: AccountRepository
+):DeliveryAddressService{
+    override fun getAllDeliveryAddress(id: Long): List<DeliveryAddress> {
+        var account=accountRepository.findOne(id)
+        return account.deliveryAddressList
+    }
+
+    override fun addDeliveryAddress(deliveryAddress: DeliveryAddress,id:Long): DeliveryAddress {
+        var account=accountRepository.findOne(id)
+        account.deliveryAddressList.add(deliveryAddress)
+        return deliveryAddressRepository.save(deliveryAddress)
+    }
+
+    override fun deleteDeliveryAddress(deliveryAddressId: Long) {
+       var deliveryAddress=deliveryAddressRepository.findOne(deliveryAddressId)
+        deliveryAddressRepository.delete(deliveryAddress)
+    }
+
+    override fun updateDeliveryAddress(deliveryAddress: DeliveryAddress) {
+        deliveryAddressRepository.save(deliveryAddress)
+    }
+
+}
+
+class SupplierServiceImpl(
+        var supplierRepository: SupplierRepository
+):SupplierService{
+    override fun getAllSupplier(): List<Supplier> {
+        return supplierRepository.findAll()
+    }
+
+    override fun updateSupplier(supplier: Supplier) {
+        supplierRepository.save(supplier)
+    }
+
+    override fun deleteSupplier(supplierId: Long) {
+        supplierRepository.delete(supplierId)
+    }
+
+    override fun addSupplier(supplier: Supplier) {
+        supplierRepository.save(supplier)
+    }
+
+
+}
+
+class StatisticsServiceImpl(
+
+):StatisticsService{
+    override fun getTodaySales() {
+        println("今日销量")
+    }
+
+    override fun getLatestSales(n: Int) {
+        println("近日销量")
+    }
+
+}

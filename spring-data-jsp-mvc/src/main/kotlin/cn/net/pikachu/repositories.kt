@@ -37,4 +37,6 @@ interface DeliveryAddressRepository : JpaRepository<DeliveryAddress,Long>
 @Repository
 interface LineItemRepository:JpaRepository<LineItem,Long>
 @Repository
-interface QuantityRepository:JpaRepository<QuantityRepository,Long>
+interface QuantityRepository:JpaRepository<Quantity,Long>
+@Repository
+interface RefundRepository:JpaRepository<RefundInfo,Long>

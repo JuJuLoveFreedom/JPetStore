@@ -259,6 +259,7 @@ RemoteSystemsTempFiles
 
 .recommenders
 .idea/
+.idea
 *.iml
 rebel.*
 .rebel.*
