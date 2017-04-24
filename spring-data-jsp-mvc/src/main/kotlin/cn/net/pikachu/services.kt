@@ -170,7 +170,7 @@ class AccountServiceImpl(
 }
 
 class GoodsServiceImpl(
-        var itemRepository: ItemRepository,
+        var itemRepository: ItemRepository
 ):GoodsService{
     /**
      * 获取商品信息
@@ -224,4 +224,36 @@ class CartServiceImpl(
     }
 
 }
->>>>>>> PikachuHy/master
+
+class OrderServiceImpl(
+        var orderRepository: OrderRepository,
+        var deliveryAddressRepository: DeliveryAddressRepository,
+        var lineItemRepository: LineItemRepository,
+        var accountRepository: AccountRepository
+):OrderService{
+    override fun makeOrder(lineItemIdList: List<Long>, deliveryAddressId: Long, id: Long) {
+        var order=orderRepository.getOne(id)
+        var deliveryAddress=deliveryAddressRepository.getOne(deliveryAddressId)
+        lineItemIdList.map {
+            lineItemRepository.findOne(it)
+        }.forEach {
+            order.items.add(it)
+        }
+        order.deliveryAddress=deliveryAddress
+        orderRepository.save(order)
+
+    }
+
+    override fun cancelOrder(orderId: Long, id: Long) {
+       var order=orderRepository.getOne(orderId)
+        order.status="取消"
+        orderRepository.save(order)
+    }
+
+    override fun getAllOrder(id: Long): List<Order> {
+       var account=accountRepository.findOne(id)
+        return account.orders
+    }
+
+}
+
