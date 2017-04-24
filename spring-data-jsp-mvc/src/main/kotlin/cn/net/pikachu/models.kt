@@ -90,7 +90,7 @@ data class Item(
         // 实际价格
         var unitPrice:BigDecimal,
         // 库存
-        var quantity:Int,
+        var quantity:Quantity,
         @OneToOne
         var category: Category,
         @OneToMany
@@ -102,6 +102,12 @@ data class Item(
         var star:BigDecimal,
         // 已售出的数量
         var number:Int
+)
+@Entity
+data class Quantity(
+        @Id
+        var id: Long,
+        var quantity:Int
 )
 @Entity
 data class ColorList(

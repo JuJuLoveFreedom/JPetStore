@@ -17,7 +17,9 @@ interface VerificationCodeRepository : JpaRepository<VerificationCode,Long>
 @Repository
 interface CategoryRepository : JpaRepository<Category, Long>
 @Repository
-interface ItemRepository : JpaRepository<Item, Long>
+interface ItemRepository : JpaRepository<Item, Long>{
+    fun findByName(name: String):List<Item>
+}
 @Repository
 interface OrderRepository : JpaRepository<Order,Long>
 @Repository
@@ -32,3 +34,7 @@ interface PayInfoRepository : JpaRepository<PayInfo,Long>
 interface LogisticsInfoRepository : JpaRepository<LogisticsInfo,Long>
 @Repository
 interface DeliveryAddressRepository : JpaRepository<DeliveryAddress,Long>
+@Repository
+interface LineItemRepository:JpaRepository<LineItem,Long>
+@Repository
+interface QuantityRepository:JpaRepository<QuantityRepository,Long>
