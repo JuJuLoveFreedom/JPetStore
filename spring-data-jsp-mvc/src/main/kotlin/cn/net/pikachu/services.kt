@@ -1,4 +1,4 @@
-package cn.net.pikachu
+﻿package cn.net.pikachu
 
 /**
  * Created by pikachu on 2017/4/22.
@@ -35,6 +35,9 @@ interface AccountService{
 }
 interface GoodsService{
     // 获取商品信息
+    /**
+     * 获取商品信息
+     */
     fun getItemByItemId(id: Long):Item
     // 通过名称搜索商品
     fun searchItemByName(name:String):List<Item>
@@ -47,7 +50,7 @@ interface CartService{
     // 清空购物车
     fun clearCart(id: Long)
     // 修购买的商品数量
-    fun updateItemQuantity(lineItemId: Long,quantity:Int,id: Long)
+    fun updateLineItemQuantity(lineItemId: Long,quantity:Int,id: Long)
     // 从购物车中移除商品
     fun removeItemFromCart(lineItemId: Long,id: Long)
 }
@@ -155,9 +158,9 @@ class AccountServiceImpl(
     }
 
     override fun updateDeliveryAddress(deliveryAddress: DeliveryAddress) {
-        var deliveryAddress=deliveryAddressRepository.findOne(deliveryAddress.id)
-        deliveryAddress=deliveryAddress
-        deliveryAddressRepository.save(deliveryAddress )
+        var deliveryAddress1=deliveryAddressRepository.findOne(deliveryAddress.id)
+        deliveryAddress1=deliveryAddress
+        deliveryAddressRepository.save(deliveryAddress1 )
     }
 
     override fun getFavItems(id: Long): List<Item> {
@@ -165,3 +168,60 @@ class AccountServiceImpl(
 
     }
 }
+
+class GoodsServiceImpl(
+        var itemRepository: ItemRepository,
+):GoodsService{
+    /**
+     * 获取商品信息
+     */
+    override fun getItemByItemId(id: Long): Item {
+        return itemRepository.getOne(id)
+    }
+
+    override fun searchItemByName(name: String): List<Item> {
+        return itemRepository.findByName(name)
+            }
+
+    override fun updateItem(item: Item) {
+      var item1=itemRepository.getOne(item.id)
+        item1=item
+        itemRepository.save(item1)
+    }
+}
+
+class CartServiceImpl(
+        var lineItemRepository: LineItemRepository,
+        var cartRepository: CartRepository,
+        var itemRepository: ItemRepository,
+        var quantityRepository: QuantityRepository,
+        var accountRepository: AccountRepository
+):CartService{
+    override fun addItemToCart(itemId: Long, id: Long) {
+        var lineItem=lineItemRepository.findOne(itemId)
+        var cart=cartRepository.getOne(id)
+        cart.lineItems.add(lineItem)
+        cartRepository.save(cart)
+    }
+
+    override fun clearCart(id: Long) {
+        var cart=cartRepository.getOne(id)
+        cart.lineItems.clear()
+        cartRepository.save(cart)
+
+    }
+
+    override fun updateLineItemQuantity(lineItemId: Long, quantity: Int, id: Long) {
+        var  lineItem=lineItemRepository.findOne(lineItemId)
+        lineItem.quantity=quantity
+        lineItemRepository.save(lineItem)
+    }
+
+    override fun removeItemFromCart(lineItemId: Long, id: Long) {
+        var cart=cartRepository.getOne(id)
+        var lineItem=lineItemRepository.findOne(lineItemId)
+        cart.lineItems.remove(lineItem)
+    }
+
+}
+>>>>>>> PikachuHy/master
