@@ -3,6 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JPetStore.iml" filepath="$PROJECT_DIR$/.idea/modules/JPetStore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_main.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc-jsp-servlet/jdbc-jsp-servlet_test.iml" group="jdbc-jsp-servlet" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc.iml" group="spring-data-jsp-mvc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc_main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc_main.iml" group="spring-data-jsp-mvc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc_test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-data-jsp-mvc/spring-data-jsp-mvc_test.iml" group="spring-data-jsp-mvc" />
     </modules>
   </component>
 </project>

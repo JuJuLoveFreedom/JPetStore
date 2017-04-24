@@ -6,6 +6,13 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/jdbc-jsp-servlet" />
+            <option value="$PROJECT_DIR$/spring-data-jsp-mvc" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
