@@ -92,3 +92,53 @@ interface StatisticsService{
     // 获取最近n天的销售情况
     fun getLatestSales(n:Int)
 }
+class AccountServiceImpl(
+        var userRepository:UserRepository
+) : AccountService{
+    override fun signIn(user:User): Boolean {
+        val user = userRepository.findByUsernameAndPassword(user.username,user.password)
+        return user!=null
+    }
+
+    override fun signUp(user:User) {
+     }
+
+    override fun findPassword(username: String, verificationCode: String): Boolean {
+    }
+
+    override fun getUserInfoById(id: Long): {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updatePassword(password: String, id: Long) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateAddress(address:, id: Long) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateBaseInfo(accountBaseInfo:) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateProfile(profile:) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun addDeliveryAddress(deliveryAddress:, id: Long) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun removeDeliveryAddress(deliveryAddressId: Long, id: Long) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateDeliveryAddress(deliveryAddress:) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getFavItems(id: Long): List<> {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository
  * Created by pikachu on 2017/4/22.
  */
 @Repository
+interface UserRepository : JpaRepository<User,Long>{
+    fun findByUsernameAndPassword(username:String,password:String):User?
+}
+@Repository
 interface AccountRepository : JpaRepository<Account, Long>
 @Repository
 interface CategoryRepository : JpaRepository<Category, Long>
