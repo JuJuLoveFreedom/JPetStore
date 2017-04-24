@@ -82,6 +82,10 @@ interface SupplierService{
     fun deleteSupplier(supplierId:Long)
     fun addSupplier(supplier: Supplier)
 }
+
+/**
+ * 此处需要讨论统计应该展示什么信息
+ */
 interface StatisticsService{
     // 获取今日的销售情况
     fun getTodaySales()
