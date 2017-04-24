@@ -51,7 +51,6 @@ data class Account(
 @Entity
 data class AccountBaseInfo(
         @Id
-        @GeneratedValue
         var id: Long,
         var phone:String,
         var qq:String,
@@ -62,7 +61,6 @@ data class AccountBaseInfo(
 @Entity
 data class Profile(
         @Id
-        @GeneratedValue
         var id:Long,
         var language:String,
         // 喜欢的宠物列表
@@ -239,4 +237,10 @@ data class Supplier(
         @Embedded
         var address: Address,
         var phone: String
+)
+@Entity
+data class VerificationCode(
+        @Id
+       var id: Long,
+       var code:String
 )

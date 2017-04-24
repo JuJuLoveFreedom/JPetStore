@@ -7,7 +7,13 @@ import org.springframework.stereotype.Repository
  * Created by pikachu on 2017/4/22.
  */
 @Repository
+interface UserRepository : JpaRepository<User,Long>{
+    fun findByUsernameAndPassword(username:String,password:String ):User?
+}
+@Repository
 interface AccountRepository : JpaRepository<Account, Long>
+@Repository
+interface VerificationCodeRepository : JpaRepository<VerificationCode,Long>
 @Repository
 interface CategoryRepository : JpaRepository<Category, Long>
 @Repository
@@ -24,3 +30,5 @@ interface SupplierRepository : JpaRepository<Supplier,Long>
 interface PayInfoRepository : JpaRepository<PayInfo,Long>
 @Repository
 interface LogisticsInfoRepository : JpaRepository<LogisticsInfo,Long>
+@Repository
+interface DeliveryAddressRepository : JpaRepository<DeliveryAddress,Long>
