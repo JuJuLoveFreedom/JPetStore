@@ -11,9 +11,9 @@ interface AccountService{
     // 登录
     fun signIn(user: User):Boolean
     // 注册
-    fun signUp(user: User)
+    fun signUp(user: User):User
     // 找回密码
-    fun findPassword(username:String,verificationCode:String):Boolean
+    fun findPassword(id: Long,verificationCode:String):Boolean
     // 获取个人信息
     fun getUserInfoById(id:Long):Account
     // 修改密码
@@ -93,52 +93,75 @@ interface StatisticsService{
     fun getLatestSales(n:Int)
 }
 class AccountServiceImpl(
-        var userRepository:UserRepository
-) : AccountService{
-    override fun signIn(user:User): Boolean {
-        val user = userRepository.findByUsernameAndPassword(user.username,user.password)
+        var userRepository: UserRepository,
+        var accountRepository: AccountRepository,
+        var verificationCodeRepository: VerificationCodeRepository,
+        var deliveryAddressRepository: DeliveryAddressRepository
+) : AccountService {
+    override fun signIn(user: User): Boolean {
+        var user=userRepository.findByUsernameAndPassword(user.username,user.password)
         return user!=null
     }
 
-    override fun signUp(user:User) {
-     }
-
-    override fun findPassword(username: String, verificationCode: String): Boolean {
+    override fun signUp(user: User):User {
+       return userRepository.save(user)
     }
 
-    override fun getUserInfoById(id: Long): {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun findPassword(id: Long,code:String): Boolean {
+       var verificationCode=verificationCodeRepository.findOne(id)
+        if(verificationCode==null){
+            return false
+        }
+        return verificationCode.code==code
+    }
+
+    override fun getUserInfoById(id: Long): Account {
+        return accountRepository.findOne(id)
     }
 
     override fun updatePassword(password: String, id: Long) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        var user=userRepository.findOne(id)
+        user.password=password
+        userRepository.save(user)
+
     }
 
-    override fun updateAddress(address:, id: Long) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun updateAddress(address: Address, id: Long) {
+        var account=accountRepository.findOne(id)
+        account.address=address
+        accountRepository.save(account)
     }
 
-    override fun updateBaseInfo(accountBaseInfo:) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun updateBaseInfo(accountBaseInfo: AccountBaseInfo) {
+        var account=accountRepository.findOne(accountBaseInfo.id)
+        account.accountBaseInfo=accountBaseInfo
+        accountRepository.save(account)
     }
 
-    override fun updateProfile(profile:) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun updateProfile(profile: Profile) {
+       var account=accountRepository.findOne(profile.id)
+        account.profile=profile
+        accountRepository.save(account)
     }
 
-    override fun addDeliveryAddress(deliveryAddress:, id: Long) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun addDeliveryAddress(deliveryAddress: DeliveryAddress, id: Long) {
+       var account=accountRepository.findOne(id)
+        account.deliveryAddressList.add(deliveryAddress)
+        accountRepository.save(account)
     }
 
     override fun removeDeliveryAddress(deliveryAddressId: Long, id: Long) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+        deliveryAddressRepository.delete(deliveryAddressId)
     }
 
-    override fun updateDeliveryAddress(deliveryAddress:) {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun updateDeliveryAddress(deliveryAddress: DeliveryAddress) {
+        var deliveryAddress=deliveryAddressRepository.findOne(deliveryAddress.id)
+        deliveryAddress=deliveryAddress
+        deliveryAddressRepository.save(deliveryAddress )
     }
 
-    override fun getFavItems(id: Long): List<> {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getFavItems(id: Long): List<Item> {
+      return accountRepository.findOne(id).profile.favItems
+
     }
 }
